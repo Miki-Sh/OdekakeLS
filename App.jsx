@@ -13,7 +13,7 @@ const App = () => {
   <>
     <header>
       <a className="header-logo" onClick={() => setIntroOpen(true)}>おでかけチェック</a>
-      <Introduction setIntroOpen={setIntroOpen} />
+      { introOpen && <Introduction setIntroOpen={setIntroOpen} /> }
     </header>
     <div className="container">
       { modalOpen && (

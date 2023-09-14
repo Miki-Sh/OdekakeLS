@@ -61,3 +61,24 @@
   color: #2488f7;
   transition: all 0.3s ease;
 }
+
+.cancel-button {
+  color: #FEFEFE;
+  background: #2cbb95;
+  font-size: 28px;
+  text-align: center;
+  width: 200px;
+  height: 55px;
+  margin-top: 16px;
+  margin-left: 2px;
+  line-height: 50px;
+  border: 3px solid #2cbb95;
+  border-radius: 30px;
+  cursor: pointer;
+}
+
+.cancel-button:hover {
+  color: #2cbb95;
+  background: #FEFEFE;
+  transition: all 0.3s ease;
+}

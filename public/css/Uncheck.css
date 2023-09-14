@@ -10,6 +10,7 @@
   text-align: center;
   color: #FEFEFE;
   border: 3px solid #2cbb95;
+  cursor: pointer;
 }
 
 .uncheck-btn:hover {

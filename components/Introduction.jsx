@@ -5,8 +5,8 @@ const Introduction = (props) => {
   const setIntroOpen = props.setIntroOpen;
   return(
     <div className="overlay" onClick={() => setIntroOpen(false)}>
-      <div className="top-wrapper" onClick={(e) => e.stopPropagation()}>
-        <div className="top-detail">
+      <div className="top-wrapper">
+        <div className="top-detail" onClick={(e) => e.stopPropagation()}>
           <h2 className="subtitle">おでかけ前のチェックリストアプリ</h2>
           <h1 className="title">おでかけチェック</h1>
           <p className="description">

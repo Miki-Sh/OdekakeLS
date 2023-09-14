@@ -51,21 +51,22 @@
 }
 
 .index-button {
+  color: #FEFEFE;
+  background: #2488f7;
+  font-size: 30px;
+  text-align: center;
   width: 350px;
   height: 60px;
-  text-align: center;
   margin: 0 auto;
   line-height: 55px;
-  font-weight: 600;
-  color: #ffffff;
-  background-color: #2488f7;
-  border-radius: 10px;
+  border: 3px solid #FEFEFE;
+  border-radius: 30px;
   cursor: pointer;
-  font-size: 30px;
 }
 
 .index-button:hover {
   color: #2488f7;
+  background:  #FEFEFE;
   border: 3px solid #2488f7;
-  background-color:  #ffffff;
+  transition: all 0.3s ease;
 }
