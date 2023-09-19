@@ -2,23 +2,23 @@ import React from 'react';
 import '../public/css/NewEdit.css';
 
 const ModalNew = (props) => {
-  const { setModalOpen, setTodoData } = props;
-    const saveTodo = () => {
-      let existingData = localStorage.getItem('todo');
-      if (!existingData) {
-        existingData = ['火の元を確認する','玄関の鍵を閉める'];
-      } else {
-        existingData = JSON.parse(existingData);
-      }
-      const val = document.querySelector('.itemName').value;
-      existingData.push(val);
-      localStorage.setItem('todo', JSON.stringify(existingData));
-      setModalOpen(false);
-      setTodoData(existingData);
-    };
+  const { setNewModalOpen, setTodoData } = props;
+  const saveTodo = () => {
+    let existingData = localStorage.getItem('todo');
+    if (!existingData) {
+      existingData = ['火の元を確認する','玄関の鍵を閉める'];
+    } else {
+      existingData = JSON.parse(existingData);
+    }
+    const val = document.querySelector('.itemName').value;
+    existingData.push(val);
+    setTodoData(existingData);
+    localStorage.setItem('todo', JSON.stringify(existingData));
+    setNewModalOpen(false);
+  };
 
     return(
-      <div className='overlay' onClick={() => setModalOpen(false)}>
+      <div className='overlay' onClick={() => setNewModalOpen(false)}>
         <div className="container">
           <div className="item-form-wrapper" onClick={(e) => e.stopPropagation()}>
             <h1>おでかけ前にすることを追加しよう！</h1>
@@ -28,7 +28,7 @@ const ModalNew = (props) => {
               <input type="submit" value="作成する" onClick={saveTodo} />
             </form>
           </div>
-          <button onClick={() => setModalOpen(false)} className="cancel-button">もどる</button>
+          <button onClick={() => setNewModalOpen(false)} className="cancel-button">もどる</button>
         </div>    
       </div>    
     );

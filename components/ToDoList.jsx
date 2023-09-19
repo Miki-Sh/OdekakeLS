@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import '../public/css/ToDoList.css'
 import ModalEdit from './ModalEdit';
+import ModalNew from './ModalNew';
 
 const ToDoList = () => {
   const [todoData, setTodoData] = useState([]);
   const [modalOpen, setModalOpen] = useState(false);
+  const [newModalOpen, setNewModalOpen] = useState(false);
   const [editIndex, setEditIndex] = useState(null);
 
   // ローカルストレージからデータを読み込む
@@ -12,6 +14,12 @@ const ToDoList = () => {
     const storedData = JSON.parse(localStorage.getItem('todo')) || ['火の元を確認する','玄関の鍵を閉める'];
     setTodoData(storedData);
   }, []);
+
+  // 編集モーダルを開く
+  const openEditModal = (index) => {
+    setEditIndex(index);
+    setModalOpen(true);
+  };
 
   // データを削除する
   const deleteTodo = (index) => {
@@ -21,13 +29,16 @@ const ToDoList = () => {
     localStorage.setItem('todo', JSON.stringify(updatedData));
   };
 
-  // 編集モーダルを開く
-  const openEditModal = (index) => {
-    setEditIndex(index);
-    setModalOpen(true);
-  };
-
   return (
+    <>
+    <div className="container-header">
+      {newModalOpen && 
+        <ModalNew
+          setNewModalOpen={setNewModalOpen}
+          setTodoData={setTodoData} />}
+      <h1>おでかけ前のチェックリスト</h1>
+      <button className="new-button" onClick={() => setNewModalOpen(true)}>+ やること追加</button>
+    </div>
     <div className="index-table-wrapper">
       <div className="table-head">
         <span className="id-column">☑️</span>
@@ -47,15 +58,14 @@ const ToDoList = () => {
           </li>
         ))}
       </ul>
-      
-      { modalOpen && 
+      {modalOpen &&
         <ModalEdit
           index={editIndex}
           todoData={todoData}
           setTodoData={setTodoData}
-          setModalOpen={setModalOpen}
-        /> }
+          setModalOpen={setModalOpen} />}
     </div>
+    </>
   );
 };
 
